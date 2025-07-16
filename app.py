@@ -48,8 +48,7 @@ def register():
     if request.method == 'POST':
         name = request.form['username']
         password = request.form['password']
-        hashed_password = generate_password_hash(password)
-        new_user = User(name=name, password=hashed_password)
+        new_user = User(name=name, password=password)
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('login'))
