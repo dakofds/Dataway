@@ -3,3 +3,4 @@ Flask_SQLAlchemy
 pg8000
 cloudinary
 Werkzeug
+gunicorn
