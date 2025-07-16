@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ item.title }}</title>
+  <style>
+    @font-face {
+      font-family: 'myFont';
+      src: url('/static/fonts/FireCode-Regular.ttf') format('truetype');
+    }
+
+    body {
+      background-color: #212121;
+      font-family: 'myFont';
+      margin: 0;
+      padding: 0;
+      color: #E6E6FA;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 20px auto;
+      background-color: #282828;
+      padding: 20px;
+      border-radius: 6px;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #E6E6FA;
+      margin-bottom: 5px;
+    }
+
+    #author {
+      font-size: 14px;
+      color: #9F9FFF;
+      margin-bottom: 15px;
+    }
+
+    #description {
+      font-size: 16px;
+      color: #DCDCDC;
+      margin-bottom: 15px;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background-color: #444;
+      margin: 30px 0 20px;
+    }
+
+    h2, h3 {
+      color: #E6E6FA;
+      font-size: 20px;
+    }
+
+    .reply {
+      background-color: #1E1E1E;
+      padding: 10px;
+      border-radius: 4px;
+      margin-bottom: 3px;
+      font-size: 8px;
+    }
+
+    .reply strong {
+      color: #9F9FFF;
+    }
+
+    .reply p {
+      margin-top: 5px;
+      color: #EEE;
+    }
+    @media (max-width: 768px) {
+        .reply {
+      background-color: #1E1E1E;
+      padding: 10px;
+      border-radius: 4px;
+      margin-bottom: 3px;
+      font-size: 15px;
+    }
+    }
+
+    textarea {
+      width: 95%;
+      background-color: #2A2A2A;
+      color: #E6E6FA;
+      border: none;
+      padding: 10px;
+      font-family: 'myFont';
+      font-size: 14px;
+      resize: vertical;
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #5D3FD3;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-family: 'myFont';
+      font-size: 14px;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: #4B2CB3;
+    }
+
+    .no-replies {
+      color: #888;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>{{ item.title }}</h1>
+    <p id="author">{{ item.author }} | {{ item.date }}</p>
+    <p id="description">{{ item.description }}</p>
+
+    {% if item.img %}
+      <img src="{{ item.img }}" alt="Imagem do post">
+    {% endif %}
+
+    <hr>
+    <h3>Responder</h3>
+    <form method="POST">
+      <textarea name="content" rows="4" required placeholder="Escreva sua resposta..."></textarea><br>
+      <button type="submit">Enviar</button>
+    </form>
+
+    <hr>
+    <h2>Respostas</h2>
+    {% if item.replies %}
+      {% for reply in item.replies %}
+        <div class="reply">
+          <strong>{{ reply.author }}</strong> em {{ reply.date }}:
+          <p>{{ reply.content }}</p>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p class="no-replies">Este tópico ainda não tem respostas.</p>
+    {% endif %}
+  </div>
+</body>
+</html>

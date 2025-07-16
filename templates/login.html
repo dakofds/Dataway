@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DATAWAY - Login</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #292522;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #ffffff;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #3b3734;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            width: 250px;
+            height: 250px;
+            object-fit: contain;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input {
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+            font-size: 16px;
+            background-color: #4a4542;
+            color: #fff;
+        }
+
+        input::placeholder {
+            color: #c0bcb9;
+        }
+
+        button {
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background-color: blue;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: violet;
+        }
+
+        a {
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="static/images/dataway.png" alt="DATAWAY LOGO" class="logo">
+        <form method="POST" class="form-group">
+            <input type="text" id="username" placeholder="Username" required name="username"maxlength="25">
+            <input type="password" id="password" placeholder="Password" required name="password" maxlength="40">
+            <a href="{{ url_for('register') }}">Don't have an account?</a>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>

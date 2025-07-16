@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upload</title>
+  <style>
+    body {
+      background-color: #212121;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .form {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    #file {
+      display: none;
+    }
+
+    #lab {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100px;
+      width: 100px;
+      border-radius: 8px;
+      border: 1px dashed #E6E6F4; /* purple */
+      cursor: pointer;
+    }
+
+    #lab img {
+      height: 30px;
+      width: 30px;
+      margin-bottom: 5px;
+    }
+
+    .inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 200px;
+      padding: 6px;
+      font-size: 14px;
+      background-color: #282828;
+      border: none;
+      border-radius: 4px;
+      color: #E6E6F4;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    .submit-container {
+      width: 100%;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #282828;
+      color: #E6E6F4;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #333333;
+    }
+  </style>
+</head>
+<body>
+  <form method="post" enctype="multipart/form-data">
+    <div class="form">
+      <label for="file">
+        <div id="lab">
+          <img src="/static/images/cloud.png" alt="Upload">
+        </div>
+      </label>
+      
+      <input type="file" id="file" name="files" accept="image/*,video/*">
+
+      <div class="inputs">
+        <input type="text" name="title" placeholder="Title" required maxlength="250">
+        <textarea id="description" name="description" rows="4" cols="25" placeholder="Description" required maxlength="500"></textarea>
+      </div>
+    </div>
+
+    <div class="submit-container">
+      <input type="submit" name="up" value="Upload">
+    </div>
+  </form>
+</body>
+</html>
