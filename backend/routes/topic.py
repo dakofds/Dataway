@@ -7,12 +7,22 @@ from werkzeug.utils import secure_filename
 from backend.database.session import SessionLocal
 from backend.models import Board, Topic, Reply
 from backend.core.auth import login_required
+from backend.routes.auth import staff
 
 topic_blueprint = Blueprint("topic", __name__)
 
 @topic_blueprint.route("/<board_name>/<int:topic_id>/delete", methods=["POST"])
+@staff
 def view_topic_delete(board_name, topic_id):
-    
+    board = db.query(Board).filter_by(name=board_name).first()
+    if not board:
+        db.close()
+        abort(404, description="Board não encontrada")
+        
+    topic = db.query(Topic).filter_by(id=topic_id).first()
+    if not topic:
+        db.close()
+        abort(404, description="Tópico não encontrado")
 
 @topic_blueprint.route("/<board_name>/create", methods=["GET"])
 def view_topic_create(board_name):
