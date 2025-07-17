@@ -1,12 +1,11 @@
 from flask import Flask
 import cloudinary
-import os
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
-DATABASE_URL = os.environ.get("DATABASE_URL")
+SECRET_KEY = "729438165"
+DATABASE_URL = "postgresql+pg8000://postgres.fusoyhrseqitubhyiuem:729438165%40Ab@aws-0-sa-east-1.pooler.supabase.com:6543/postgres"
 
 cloudinary.config(
-    cloud_name=os.environ.get("CLOUD_NAME"),
-    api_key=os.environ.get("API_KEY"),
-    api_secret=os.environ.get("API_SECRET")
+    cloud_name="dkwfe3rw0",
+    api_key="972526711439996",
+    api_secret="hmU9fi25VYZeifUJj8Von-LDpEM"
 )
