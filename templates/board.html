@@ -159,6 +159,9 @@
     <a href="{{ url_for('topic.view_topic', board_name=title, topic_id=topic.id) }}" id="author">
         {{ topic.author_user.name }} - {{ topic.created_at.strftime('%d/%m/%Y %H:%M') }}
     </a>
+    <a href="" style="visibility: {{ visibility }}">
+      Delete
+    </a>
     <div class="content">
         {% if topic.media %}
         <img src="{{ topic.media }}" alt="Imagem do post">
