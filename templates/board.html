@@ -160,7 +160,7 @@
         {{ topic.author_user.name }} - {{ topic.created_at.strftime('%d/%m/%Y %H:%M') }}
     </a>
     {% if not user.is_admin %}
-    <form method="POST" action="{{ url_for('view_board_delete', topic_id=topic.id) }}">
+    <form method="POST" action="{{ url_for('view_topic_delete', topic_id=topic.id) }}">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <button type="submit" class="btn btn-danger">Deletar</button>
     </form>
