@@ -10,6 +10,10 @@ from backend.core.auth import login_required
 
 topic_blueprint = Blueprint("topic", __name__)
 
+@topic_blueprint.route("/<board_name>/<int:topic_id>/delete", methods=["POST"])
+def view_topic_delete(board_name, topic_id):
+    
+
 @topic_blueprint.route("/<board_name>/create", methods=["GET"])
 def view_topic_create(board_name):
     """
