@@ -71,3 +71,7 @@ def register():
     db.close()
     return redirect(url_for('board.read_root', board='home'))
 
+def staff():
+    user = session["username"]
+    verify = db.query(User).filter_by(user=name, is_staff=True).first()
+    
