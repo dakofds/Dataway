@@ -159,7 +159,7 @@
     <a href="{{ url_for('topic.view_topic', board_name=title, topic_id=topic.id) }}" id="author">
         {{ topic.author_user.name }} - {{ topic.created_at.strftime('%d/%m/%Y %H:%M') }}
     </a>
-    {% if not user.is_admin %}
+    {% if not user.is_staff %}
     <form method="POST" action="{{ url_for('view_topic_delete', topic_id=topic.id) }}">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <button type="submit" class="btn btn-danger">Deletar</button>
