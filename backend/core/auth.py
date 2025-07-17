@@ -1,6 +1,7 @@
 from flask import session, redirect, url_for
 from functools import wraps
 from backend.models import Board, Topic
+from backend.database.session import SessionLocal
 
 def login_required(f):
     @wraps(f)
@@ -13,6 +14,7 @@ def login_required(f):
 def staff_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
+        db = SessionLocal()
         name = session.get("username")
         verify = db.query(User).filter_by(name=name, is_staff=True).first()
         if not verify:
