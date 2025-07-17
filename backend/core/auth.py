@@ -1,6 +1,6 @@
 from flask import session, redirect, url_for
 from functools import wraps
-from backend.models import Board, Topic
+from backend.models import Board, Topic, User
 from backend.database.session import SessionLocal
 
 def login_required(f):
