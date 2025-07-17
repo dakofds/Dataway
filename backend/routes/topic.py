@@ -23,6 +23,7 @@ def view_topic_delete(board_name, topic_id):
     if not topic:
         db.close()
         abort(404, description="Tópico não encontrado")
+    return "teste"
 
 @topic_blueprint.route("/<board_name>/create", methods=["GET"])
 def view_topic_create(board_name):
