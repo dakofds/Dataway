@@ -8,3 +8,11 @@ def login_required(f):
             return redirect(url_for('auth.login'))
         return f(*args, **kwargs)
     return decorated_function
+
+def staff_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        name = session["username"]
+        verify = db.query(User).filter_by(name=name, is_staff=True).first()
+        if not verify:
+            return redirect(url_for('board.read_root', board='home'))
