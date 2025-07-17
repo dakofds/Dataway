@@ -13,6 +13,7 @@ topic_blueprint = Blueprint("topic", __name__)
 @topic_blueprint.route("/<board_name>/<int:topic_id>/delete", methods=["GET"])
 @staff_required
 def view_topic_delete(board_name, topic_id):
+    db = SessionLocal()
     board = db.query(Board).filter_by(name=board_name).first()
     if not board:
         db.close()
