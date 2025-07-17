@@ -150,13 +150,13 @@
         {% endfor %}
         </div>
         <div class="share">
-            <a href="{{ url_for('board.view_topic_create', board_name=title) }}" id="new" class="button-link">new topic</a>
+            <a href="{{ url_for('topic.view_topic_create', board_name=title) }}" id="new" class="button-link">new topic</a>
         </div>
     </div>
 
     {% for topic in topics %}
     <div class="Topic">
-    <a href="{{ url_for('board.view_topic', board_name=title, topic_id=topic.id) }}" id="author">
+    <a href="{{ url_for('topic.view_topic', board_name=title, topic_id=topic.id) }}" id="author">
         {{ topic.author_user.name }} - {{ topic.created_at.strftime('%d/%m/%Y %H:%M') }}
     </a>
     <div class="content">

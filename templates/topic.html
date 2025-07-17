@@ -135,7 +135,7 @@
 
     <hr>
     <h3>Responder</h3>
-    <form method="POST" action="{{ url_for('board.create_topic_reply', board_name=topic.board_rel.name, topic_id=topic.id) }}">
+    <form method="POST" action="{{ url_for('topic.create_topic_reply', board_name=topic.board_rel.name, topic_id=topic.id) }}">
       <textarea name="content" rows="4" required placeholder="Escreva sua resposta..."></textarea><br>
       <button type="submit">Enviar</button>
     </form>
