@@ -6,8 +6,7 @@ import cloudinary.uploader
 from werkzeug.utils import secure_filename
 from backend.database.session import SessionLocal
 from backend.models import Board, Topic, Reply
-from backend.core.auth import login_required
-from backend.routes.auth import staff
+from backend.core.auth import login_required, staff_required
 
 topic_blueprint = Blueprint("topic", __name__)
 
