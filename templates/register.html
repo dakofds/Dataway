@@ -78,7 +78,7 @@
         <form method="POST" class="form-group">
             <input type="text" id="username" placeholder="Username" required name="username" maxlength="25">
             <input type="password" id="password" placeholder="Password" required name="password" maxlength="40">
-            <a href="login.html">Already have an account?</a>
+            <a href="{{ url_for('auth.login_page') }}">Already have an account?</a>
             <button type="submit">Register</button>
         </form>
     </div>

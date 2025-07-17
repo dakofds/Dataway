@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ item.title }}</title>
+  <title>{{ topic.subject }}</title>
   <style>
     @font-face {
       font-family: 'myFont';
@@ -125,27 +125,27 @@
 </head>
 <body>
   <div class="container">
-    <h1>{{ item.title }}</h1>
-    <p id="author">{{ item.author }} | {{ item.date }}</p>
-    <p id="description">{{ item.description }}</p>
+    <h1>{{ topic.subject }}</h1>
+    <p id="author">{{ topic.author_user.name }} | {{ topic.created_at.strftime('%d/%m/%Y %H:%M') }}</p>
+    <p id="description">{{ topic.content }}</p>
 
-    {% if item.img %}
-      <img src="{{ item.img }}" alt="Imagem do post">
+    {% if topic.media %}
+      <img src="{{ topic.media }}" alt="Imagem do post">
     {% endif %}
 
     <hr>
     <h3>Responder</h3>
-    <form method="POST">
+    <form method="POST" action="{{ url_for('board.create_topic_reply', board_name=topic.board_rel.name, topic_id=topic.id) }}">
       <textarea name="content" rows="4" required placeholder="Escreva sua resposta..."></textarea><br>
       <button type="submit">Enviar</button>
     </form>
 
     <hr>
     <h2>Respostas</h2>
-    {% if item.replies %}
-      {% for reply in item.replies %}
+    {% if topic.replies %}
+      {% for reply in topic.replies %}
         <div class="reply">
-          <strong>{{ reply.author }}</strong> em {{ reply.date }}:
+          <strong>{{ reply.author_user.name }}</strong> em {{ reply.created_at.strftime('%d/%m/%Y %H:%M') }}:
           <p>{{ reply.content }}</p>
         </div>
       {% endfor %}

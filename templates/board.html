@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tech</title>
+    <title>{{ title }}</title>
     <style>
       @font-face {
         font-family: 'myFont';
@@ -49,7 +49,7 @@
         color: #E6E6F4;
       }
 
-      .Item {
+      .Topic {
         max-width: 650px;
         width: 90%;
         border-radius: 3px;
@@ -144,31 +144,30 @@
   </head>
   <body>
     <div class="header">
-      <div class="boards">
-        <a href="{{ url_for('view_board', board='home') }}">/home/</a>
-        <a href="{{ url_for('view_board', board='root') }}">/root/</a>
-        <a href="{{ url_for('view_board', board='dev') }}">/dev/</a>
-        <a href="{{ url_for('view_board', board='tech') }}">/tech/</a>
-        <a href="{{ url_for('view_board', board='tv') }}">/tv/</a>
-        <a href="{{ url_for('view_board', board='weeb') }}">/weeb/</a>
-        <a href="{{ url_for('view_board', board='pol') }}">/pol/</a>
-        <a href="{{ url_for('view_board', board='pr0n') }}">/pr0n/</a>
-      </div>
-      <div class="share">
-        <input type="submit" id="new" value="new topic">
-      </div>
+        <div class="boards">
+        {% for board in boards %}
+            <a href="{{ url_for('board.view_board', board_name=board.name) }}">/{{ board.name }}/</a>
+        {% endfor %}
+        </div>
+        <div class="share">
+            <a href="{{ url_for('board.view_topic_create', board_name=title) }}" id="new" class="button-link">new topic</a>
+        </div>
     </div>
 
-    {% for posts in post %}
-    <div class="Item">
-      <a href="{{ url_for('view_item', board='tech', id=posts.id) }}" id="author">{{ posts.author }} - {{ posts.date }}</a>
-      <div class="content">
-        <img src="{{ posts.img }}" alt="Imagem do post">
+    {% for topic in topics %}
+    <div class="Topic">
+    <a href="{{ url_for('board.view_topic', board_name=title, topic_id=topic.id) }}" id="author">
+        {{ topic.author_user.name }} - {{ topic.created_at.strftime('%d/%m/%Y %H:%M') }}
+    </a>
+    <div class="content">
+        {% if topic.media %}
+        <img src="{{ topic.media }}" alt="Imagem do post">
+        {% endif %}
         <div class="text">
-          <li id="title">{{ posts.title }}</li>
-          <li id="description">{{ posts.description }}</li>
+        <h3 id="title">{{ topic.subject }}</h3>
+        <p id="description">{{ topic.content }}</p>
         </div>
-      </div>
+    </div>
     </div>
     {% endfor %}
   </body>

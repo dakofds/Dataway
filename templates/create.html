@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Upload</title>
+  <title>Create Topic</title>
   <style>
     body {
       background-color: #212121;
@@ -98,16 +98,16 @@
         </div>
       </label>
       
-      <input type="file" id="file" name="files" accept="image/*,video/*">
+      <input type="file" id="file" name="media" accept="image/*,video/*">
 
       <div class="inputs">
-        <input type="text" name="title" placeholder="Title" required maxlength="250">
-        <textarea id="description" name="description" rows="4" cols="25" placeholder="Description" required maxlength="500"></textarea>
+        <input type="text" name="subject" placeholder="Subject" required maxlength="250">
+        <textarea id="content" name="content" rows="4" cols="25" placeholder="Content" required maxlength="500"></textarea>
       </div>
     </div>
 
     <div class="submit-container">
-      <input type="submit" name="up" value="Upload">
+      <input type="submit" value="Create Topic">
     </div>
   </form>
 </body>
